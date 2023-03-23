@@ -1,0 +1,59 @@
+\hypertarget{header_8h_source}{}\doxysection{header.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Definição\ da\ estrutura\ de\ dados\ para\ clientes}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcliente}{cliente}}\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keywordtype}{int}\ nif;}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{float}\ saldo;}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{char}\ nome[50];}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{char}\ morada[100];}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcliente}{cliente}}*\ seguinte;}
+\DoxyCodeLine{00010\ \}\ \mbox{\hyperlink{structcliente}{Cliente}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Definição\ da\ estrutura\ de\ dados\ para\ gestores}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgestor}{gestor}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{char}\ nome[50];}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{char}\ email[100];}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgestor}{gestor}}*\ seguinte;}
+\DoxyCodeLine{00017\ \}\ \mbox{\hyperlink{structgestor}{Gestor}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ Definição\ da\ estrutura\ de\ dados\ para\ meios\ de\ Mobilidade\ Eletrica}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmeios}{meios}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ codigo;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{char}\ tipo[20];}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ bateria;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ autonomia;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{float}\ custo;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmeios}{meios}}*\ seguinte;}
+\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{structmeios}{Meios}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Funções\ para\ manipulação\ dos\ dados\ de\ clientes}}
+\DoxyCodeLine{00032\ \mbox{\hyperlink{structcliente}{Cliente}}*\ inserirCliente(\mbox{\hyperlink{structcliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{int}\ nif,\ \textcolor{keywordtype}{float}\ saldo,\ \textcolor{keywordtype}{char}\ nome[],\ \textcolor{keywordtype}{char}\ morada[]);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ listarClientes(\mbox{\hyperlink{structcliente}{Cliente}}*\ inicio);}
+\DoxyCodeLine{00034\ \mbox{\hyperlink{structcliente}{Cliente}}*\ removerCliente(\mbox{\hyperlink{structcliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{int}\ nif);}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ alterarCliente(\mbox{\hyperlink{structcliente}{Cliente}}*\ clientes,\ \textcolor{keywordtype}{int}\ nif);}
+\DoxyCodeLine{00036\ \mbox{\hyperlink{structcliente}{Cliente}}*\ existeCliente(\mbox{\hyperlink{structcliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{int}\ nif);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Funções\ para\ manipulação\ dos\ dados\ de\ gestores}}
+\DoxyCodeLine{00039\ \mbox{\hyperlink{structgestor}{Gestor}}*\ inserirGestor(\mbox{\hyperlink{structgestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{char}\ nome[],\ \textcolor{keywordtype}{char}\ email[]);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ listarGestores(\mbox{\hyperlink{structgestor}{Gestor}}*\ inicio);}
+\DoxyCodeLine{00041\ \mbox{\hyperlink{structgestor}{Gestor}}*\ removerGestor(\mbox{\hyperlink{structgestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{char}\ email[]);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ alterarGestor(\mbox{\hyperlink{structgestor}{Gestor}}*\ gestores,\ \textcolor{keywordtype}{char}\ email[]);}
+\DoxyCodeLine{00043\ \mbox{\hyperlink{structgestor}{Gestor}}*\ existeGestor(\mbox{\hyperlink{structgestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{char}\ email[]);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Funções\ para\ manipulação\ dos\ dados\ dos\ meios\ de\ mobilidade}}
+\DoxyCodeLine{00046\ \mbox{\hyperlink{structmeios}{Meios}}*\ inserirMeio(\mbox{\hyperlink{structmeios}{Meios}}*\ inicio,\ \textcolor{keywordtype}{int}\ codigo,\ \textcolor{keywordtype}{char}\ tipo[],\ \textcolor{keywordtype}{float}\ bateria,\ \textcolor{keywordtype}{float}\ autonomia,\ \textcolor{keywordtype}{float}\ custo);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ listarMeios(\mbox{\hyperlink{structmeios}{Meios}}*\ inicio);}
+\DoxyCodeLine{00048\ \mbox{\hyperlink{structmeios}{Meios}}*\ removerMeio(\mbox{\hyperlink{structmeios}{Meios}}*\ inicio,\ \textcolor{keywordtype}{int}\ codigo);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ alterarMeio(\mbox{\hyperlink{structmeios}{Meios}}*\ \mbox{\hyperlink{structmeios}{meios}},\ \textcolor{keywordtype}{int}\ codigo);}
+\DoxyCodeLine{00050\ \mbox{\hyperlink{structmeios}{Meios}}*\ existeMeio(\mbox{\hyperlink{structmeios}{Meios}}*\ inicio,\ \textcolor{keywordtype}{int}\ codigo);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{int}\ guardarMeios(\mbox{\hyperlink{structmeios}{Meios}}*\ inicio);}
+\DoxyCodeLine{00054\ \mbox{\hyperlink{structmeios}{Meios}}*\ lerMeios();}
+
+\end{DoxyCode}
