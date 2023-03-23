@@ -6,11 +6,11 @@
 // Variável global para controlar o número de clientes inseridos
 int num_meios = 0;
 
-Meios* inserirMeio(Meios* inicio, int codigo, char tipo[], float bateria, float autonomia, float custo) {
+Meios* inserirMeio(Meios* inicio, char codigo[], char tipo[], float bateria, float autonomia, float custo) {
     if (!existeMeio(inicio, codigo)) {
         Meios* novoMeio = (Meios*) malloc(sizeof(struct meios));
         if (novoMeio != NULL) {
-            novoMeio->codigo = codigo;
+            strcpy(novoMeio->codigo, codigo);
             strcpy(novoMeio->tipo, tipo);
             novoMeio->bateria = bateria;
             novoMeio->autonomia = autonomia;
@@ -30,14 +30,14 @@ Meios* inserirMeio(Meios* inicio, int codigo, char tipo[], float bateria, float 
 
 
 void listarMeios(Meios* inicio) {
-    printf("Tipo | Bateria | Autonomia | Custo\n");
+    printf("Codigo | Tipo | Bateria | Autonomia | Custo\n");
     while (inicio != NULL) {
-        printf("%s %.2f %.2f %.2f\n", inicio->tipo, inicio->bateria, inicio->autonomia, inicio->custo);
+        printf("%s %s %.2f %.2f %.2f\n", inicio->codigo, inicio->tipo, inicio->bateria, inicio->autonomia, inicio->custo);
         inicio = inicio->seguinte;
     }
 }
 
-Meios* removerMeio(Meios* inicio, int codigo)
+Meios* removerMeio(Meios* inicio, char codigo[])
 {
     Meios *anterior=inicio, *atual=inicio, *aux;
 
@@ -61,7 +61,7 @@ Meios* removerMeio(Meios* inicio, int codigo)
  }
 }
 
-void alterarMeio(Meios* meios, int codigo) {
+void alterarMeio(Meios* meios, char codigo[]) {
     Meios* meio = existeMeio(meios, codigo);
     if (meio == NULL) {
         system("cls");
@@ -99,7 +99,7 @@ void alterarMeio(Meios* meios, int codigo) {
     printf("Meio alterado com sucesso.\n");
 }
 
-Meios* existeMeio(Meios* inicio, int codigo){
+Meios* existeMeio(Meios* inicio, char codigo[]){
     while(inicio != NULL){
         if (inicio->codigo == codigo) return inicio;
             inicio = inicio->seguinte;
@@ -118,7 +118,7 @@ int guardarMeios(Meios* inicio)
  while (aux != NULL)
 
  {
-  fprintf(fp,"%d;%s;%f;%f;%f;\n", aux->codigo, aux->tipo, 
+  fprintf(fp,"%s;%s;%f;%f;%f;\n", aux->codigo, aux->tipo, 
 	                            aux->bateria, aux->autonomia, aux->custo);
   aux = aux->seguinte;
  }
@@ -131,14 +131,14 @@ int guardarMeios(Meios* inicio)
 
 Meios* lerMeios()
 {FILE* fp;
-  int codigo;
+  char codigo[50];
   float bateria, autonomia, custo;
   char tipo[50];
   Meios* aux=NULL;
   fp = fopen("meios.txt","r");
   if (fp!=NULL)
   {while (!feof(fp))
-    { fscanf(fp,"%d;%s;%f;%f;%f\n", &codigo, tipo, &bateria, &autonomia, &custo);
+    { fscanf(fp,"%s;%s;%f;%f;%f\n", codigo, tipo, &bateria, &autonomia, &custo);
       aux = inserirMeio(aux, codigo, tipo, bateria, autonomia, custo);
     }
     fclose(fp);

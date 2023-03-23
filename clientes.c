@@ -4,6 +4,7 @@
 #include "header.h"
 
 // Variável global para controlar o número de clientes inseridos
+
 int num_clientes = 0;
 
 Cliente* inserirCliente(Cliente * inicio, int nif, float saldo, char nome[], char morada[]) {

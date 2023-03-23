@@ -67,7 +67,7 @@ Meios* meios = NULL; // Lista ligada vazia
 Gestor* gestor = NULL; // Lista ligada vazia 
 
 //variaveis
-int codigo;
+char codigo[50];
 char tipo[50];
 float bateria;
 float autonomia;
@@ -79,7 +79,6 @@ char email[50];
 int nif;
 float saldo;
 char morada[100];
-
 
 int opcao;
 
@@ -93,135 +92,136 @@ do {
                 {
                 case 1:
                     system("cls");
-                    printf("Tipo:\n");
-                    scanf("%d",&nif);
-                    printf("Bateria:\n");
-                    scanf("%f",&bateria);
+                    printf("Codigo:\n");
+                    scanf("%s", codigo);
                     getchar();
+                    printf("Tipo:\n");
+                    scanf("%s", tipo);
+                    getchar();
+                    printf("Bateria:\n");
+                    scanf("%f", &bateria);
                     printf("Autonomia: \n");
                     scanf("%f", &autonomia);
-                    getchar();
                     printf("Custo: \n");
                     scanf("%f", &custo);
-                    getchar();
                         meios = inserirMeio(meios, codigo, tipo, bateria, autonomia, custo);
-                break;
+                    break;
                 case 2:
                     system("cls");
                     listarMeios(meios);
                     printf("\n");
-                break;
+                    break;
                 case 3:
                     system("cls");
                     printf("Codigo do meio que quer remover?\n");
-                    scanf("%d",&nif);
+                    scanf("%s", codigo);
                     meios = removerMeio(meios, codigo);
-                break;
+                    break;
                 case 4:
                     system("cls");
                     printf("Codigo do meio a ser alterado: ");
-                    scanf("%d", &codigo);
+                    scanf("%s", codigo);
                     getchar();
                     alterarMeio(meios, codigo);
-                break;
+                    break;
                 case 5:
                     guardarMeios(meios);
-                break;
+                    break;
                 case 6:
                     meios = lerMeios();
-                break;
+                    break;
                 case 9:
                     system("cls");
                     menu();
-                break;
+                    break;
                 default:
                 break;
                 }
-
+    
                 } while (opcao != 0);
             break;
         case 2:
                 do {
-                    opcao = menuClientes();
-                    switch (opcao) {
-                        case 1:
-                            system("cls");
-                            printf("NIF:\n");
-                            scanf("%d",&nif);
-                            printf("Saldo:\n");
-                            scanf("%f",&saldo);
-                            getchar();
-                            printf("Nome: \n");
-                            scanf("%s", nome);
-                            getchar();
-                            printf("Morada: \n");
-                            scanf("%s", morada);
-                            getchar();
-                                clientes = inserirCliente(clientes, nif, saldo, nome, morada);
-                            break;
-                        case 2:
-                            system("cls");
-                            listarClientes(clientes);
-                            printf("\n");
-                            break;
-                        case 3:
-                            printf("NIF do cliente que quer remover?\n");
-                            scanf("%d",&nif);
-                            clientes = removerCliente(clientes, nif);
-                        case 4:
-                            printf("NIF do cliente a ser alterado: ");
-                            scanf("%d", &nif);
-                            getchar();
-                            alterarCliente(clientes, nif);
-                            break;
-                        case 9:
-                            system("cls");
-                            menu();
-                            break;
-                        default:
-                            system("cls");
-                            printf("Opção inválida.\n");
-                            break;
-                        }
+                opcao = menuClientes();
+                switch (opcao) {
+                    case 1:
+                        system("cls");
+                        printf("NIF:\n");
+                        scanf("%d",&nif);
+                        printf("Saldo:\n");
+                        scanf("%f",&saldo);
+                        getchar();
+                        printf("Nome: \n");
+                        scanf("%s", nome);
+                        getchar();
+                        printf("Morada: \n");
+                        scanf("%s", morada);
+                        getchar();
+                            clientes = inserirCliente(clientes, nif, saldo, nome, morada);
+                        break;
+                    case 2:
+                        system("cls");
+                        listarClientes(clientes);
+                        printf("\n");
+                        break;
+                    case 3:
+                        printf("NIF do cliente que quer remover?\n");
+                        scanf("%d",&nif);
+                        clientes = removerCliente(clientes, nif);
+                    case 4:
+                        printf("NIF do cliente a ser alterado: ");
+                        scanf("%d", &nif);
+                        getchar();
+                        alterarCliente(clientes, nif);
+                        break;
+                    case 9:
+                        system("cls");
+                        menu();
+                        break;
+                    default:
+                        system("cls");
+                        printf("Opção inválida.\n");
+                        break;
+                    }
                 } while (opcao != 0);
             break;
         case 3:
                 do {
-                    opcao = menuGestores();
-                                switch (opcao) {
-                                case 1:
-                                    system("cls");
-                                    printf("Nome:\n");
-                                    scanf("%s",&nome[0]);
-                                    printf("Email:\n");
-                                    scanf("%s",&email[0]);
-                                    getchar();
-                                        gestor = inserirGestor(gestor, nome, email);
-                                    break;
-                                case 2:
-                                    system("cls");
-                                    listarGestores(gestor);
-                                    printf("\n");
-                                    break;
-                                case 3:
-                                    printf("Email do gestor que quer remover?\n");
-                                    scanf("%s",&email[0]);
-                                    gestor = removerGestor(gestor, email);
-                                case 4:
-                                    printf("Email do gestor a ser alterado: ");
-                                    scanf("%s", &email[0]);
-                                    getchar();
-                                    alterarGestor(gestor, email);
-                                    break;
-                                case 9:
-                                    system("cls");
-                                    menu();
-                                    break;
-                                default:
-                                    system("cls");
-                                    printf("Opção inválida.\n");
-                                    break;
-                                    }
+                opcao = menuGestores();
+                switch (opcao) {
+                    case 1:
+                        system("cls");
+                        printf("Nome:\n");
+                        scanf("%s",&nome[0]);
+                        printf("Email:\n");
+                        scanf("%s",&email[0]);
+                        getchar();
+                            gestor = inserirGestor(gestor, nome, email);
+                        break;
+                    case 2:
+                        system("cls");
+                        listarGestores(gestor);
+                        printf("\n");
+                        break;
+                    case 3:
+                        printf("Email do gestor que quer remover?\n");
+                        scanf("%s",&email[0]);
+                        gestor = removerGestor(gestor, email);
+                    case 4:
+                        printf("Email do gestor a ser alterado: ");
+                        scanf("%s", &email[0]);
+                        getchar();
+                        alterarGestor(gestor, email);
+                        break;
+                    case 9:
+                        system("cls");
+                        menu();
+                        break;
+                    default:
+                        system("cls");
+                        printf("Opção inválida.\n");
+                        break;
+                        }
                 } while (opcao != 0);
             break;
         case 0:
@@ -231,7 +231,7 @@ do {
         default:
             system("cls");
             printf("Opção inválida.\n");
-            break;
+        break;
     }
 } while (opcao != 0);
 
