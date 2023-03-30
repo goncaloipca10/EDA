@@ -5,7 +5,7 @@
 
 // Variável global para controlar o número de gestores inseridos
 int num_gestores = 0;
-
+//Inserir Gestores
 Gestor* inserirGestor(Gestor* inicio, char nome[], char email[]) {
     if (!existeGestor(inicio, email)) {
         Gestor* novoGestor = (Gestor*) malloc(sizeof(struct gestor));
@@ -14,18 +14,18 @@ Gestor* inserirGestor(Gestor* inicio, char nome[], char email[]) {
             strcpy(novoGestor->email, email);
             novoGestor->seguinte = inicio;
             inicio = novoGestor;
-            system("cls");
+            system("clear");
             printf("Gestor inserido com sucesso!\n");
             return novoGestor;
         }
     } else {
-        system("cls");
+        system("clear");
         printf("O Gestor ja se encontra registado.\n");
     }
     return inicio;
 }
 
-
+//Listar todos os Gestores da lista
 void listarGestores(Gestor* inicio) {
     printf("Nome      |     Email\n");
     while (inicio != NULL) {
@@ -33,7 +33,7 @@ void listarGestores(Gestor* inicio) {
         inicio = inicio->seguinte;
     }
 }
-
+//Remover os Gestores atraves do email
 Gestor* removerGestor(Gestor* inicio, char email[])
 {
     Gestor *anterior=inicio, *atual=inicio, *aux;
@@ -57,11 +57,11 @@ Gestor* removerGestor(Gestor* inicio, char email[])
   }
  }
 }
-
+//Alterar dados dos gestores
 void alterarGestor(Gestor* gestores, char email[]) {
     Gestor* gestor = existeGestor(gestores, email);
     if (gestor == NULL) {
-        system("cls");
+        system("clear");
         printf("Gestor nao encontrado.\n");
         return;
     }
@@ -79,10 +79,10 @@ void alterarGestor(Gestor* gestores, char email[]) {
     strcpy(gestor->nome, novoNome);
     strcpy(gestor->email, novoEmail);
 
-    system("cls");
+    system("clear");
     printf("Gestor alterado com sucesso.\n");
 }
-
+//Verificar se existe Gestores
 Gestor* existeGestor(Gestor* inicio, char email[]){
     while(inicio != NULL){
         if (inicio->email == email) return inicio;

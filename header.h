@@ -20,7 +20,7 @@ typedef struct gestor {
 // Definição da estrutura de dados para meios de Mobilidade Eletrica
 typedef struct meios {
     char codigo[50];
-    char tipo[20];
+    char tipo[50];
     float bateria;
     float autonomia;
     float custo;
@@ -48,7 +48,10 @@ void listarMeios(Meios* inicio);
 Meios* removerMeio(Meios* inicio, char codigo[]);
 void alterarMeio(Meios* meios, char codigo[]);
 Meios* existeMeio(Meios* inicio, char codigo[]);
-
+Meios* consultar(Meios* inicio, char codigo[]); // consultar registo a partir do código
 
 int guardarMeios(Meios* inicio);
 Meios* lerMeios();
+
+int guardarMeiosBin(Meios* inicio);
+Meios* lerMeiosBin();
